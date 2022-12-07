@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import NumberFormat from 'react-number-format'
+//import { default as NumberFormat } from 'react-number-format';
 
 function App() {
   const [preState, setPreState] = useState("");
