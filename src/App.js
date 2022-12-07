@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
+import NumberFormat from 'react-number-format'
 
 function App() {
   const [preState, setPreState] = useState("");
@@ -42,8 +43,9 @@ function App() {
   };
 
   const equals = (e) => {
-    if (e?.target.innerText === "=") setTotal(true);
-  };
+    if (e?.target.innerText === "=") {
+    setTotal(true);
+  }
 
   let cal;
   switch (operator) {
@@ -60,14 +62,12 @@ function App() {
       cal = String(parseFloat(preState) * parseFloat(curState));
       break;
     default:
-      // return
-      
+      return;
   }
-  // setInput("")
-  // setPreState(cal)
-  // setCurState("")
-
-
+  setInput("")
+  setPreState(cal)
+  setCurState("")
+  };
   const minusPlus = () => {};
 
   const percent = () => {};
@@ -81,7 +81,9 @@ function App() {
   return (
     <div className="container">
       <div className="wrapper">
-        <div className="screen">{input}</div>
+        <div className="screen">{input !=="" || input ==="0" ? 
+        <NumberFormat value={input} displayType ={'text'} 
+        thousandSeparator={true} /> : <NumberFormat value={preState} displayType={'text'} thousandSeparator={true} />}  </div>
         <div className="btn light-gray ac" onClick={reset}>
           AC
         </div>
